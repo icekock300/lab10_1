@@ -3,129 +3,132 @@ using System.Diagnostics.Metrics;
 
 namespace lab10LibraryWin
 {
-    //public class IdNumber
-    //{
-    //    public int number;
-
-    //    public int Number
-    //    {
-    //        get => number;
-    //        set
-    //        {
-    //            if (value < 0)
-    //                number = 0;
-    //            else
-    //                number = value;
-    //        }
-    //    }
-    //    public IdNumber(int number)
-    //    {
-    //        Number = number;
-    //    }
-    //    public override string ToString()
-    //    {
-    //        return number.ToString();
-    //    }
-
-    //    public override bool Equals(object? obj)
-    //    {
-    //        if (obj is IdNumber n)
-    //            return this.number == n.number;
-    //        return false;
-    //    }
-    //}
-    public class MusicalInstrument : IInit, IComparable//, ICloneable
+    public class IdNumber
     {
-        protected string instrumentName;
-
-        public string InstrumentName { get; set; }
-
-        //public IdNumber id;
-
-        public MusicalInstrument() //конструктор без параметров
+        protected int id; // поле id
+        public int Id // свойство для поля id
         {
-            InstrumentName = "NoName";
-            //id = new IdNumber(1);
+            get => id;
+            set
+            {
+                if (value < 0)
+                    throw new Exception("ID должно быть больше нуля!");
+                else
+                    id = value;
+            }
         }
-
-        public MusicalInstrument(string instrumentName/*, int number*/) //конструктор с параметром
+        public IdNumber(int id) // конструктор с параметром
         {
-            InstrumentName = instrumentName;
-            //id = new IdNumber(number);
+            Id = id;
         }
-
-        [ExcludeFromCodeCoverage]
-        public virtual void ShowVirtual()
+        public override string ToString() // перегруженный метод ToString()
         {
-            Console.WriteLine($"Название инструмента: {InstrumentName}");
+            return Id.ToString();
         }
-
-        [ExcludeFromCodeCoverage]
-        public void Show()
-        {
-            Console.WriteLine($"Название инструмента: {InstrumentName}");
-        }
-
-
-        public override bool Equals(object obj)
+        public override bool Equals(object obj) // перегруженный метод Equals()
         {
             if (obj == null) return false;
-            if (obj is not MusicalInstrument) return false;
-            return ((MusicalInstrument)obj).InstrumentName == this.InstrumentName;
+            if (obj is IdNumber i)
+                return Id == i.Id;
+            return false;
         }
+    }
 
-        [ExcludeFromCodeCoverage]
-        public override string ToString()
+        public class MusicalInstrument : IInit, IComparable, ICloneable
         {
-            return $"id: , Название инструмента: {InstrumentName}";
-        }
+            protected string instrumentName;
 
-        public virtual void RandomInit()
-        {
-            string[] lines = {
+            public string InstrumentName { get; set; }
+            public IdNumber id;
+
+            public IdNumber Id { get { return id; } }
+
+            public MusicalInstrument() //конструктор без параметров
+            {
+                InstrumentName = "NoName";
+                id = new IdNumber(1);
+            }
+
+            public MusicalInstrument(string instrumentName, IdNumber id) //конструктор с параметром
+            {
+                InstrumentName = instrumentName;
+                this.id = id;
+            }
+
+            [ExcludeFromCodeCoverage]
+            public virtual void ShowVirtual()
+            {
+                Console.WriteLine($"id: {id}, Название инструмента: {InstrumentName}");
+            }
+
+            [ExcludeFromCodeCoverage]
+            public void Show()
+            {
+                Console.WriteLine($"id: {id}, Название инструмента: {InstrumentName}");
+            }
+
+
+            public override bool Equals(object obj)
+            {
+                if (obj == null) return false;
+                if (obj is not MusicalInstrument) return false;
+                return ((MusicalInstrument)obj).InstrumentName == this.InstrumentName;
+            }
+
+            [ExcludeFromCodeCoverage]
+            public override string ToString()
+            {
+                return $"id: {id}, Название инструмента: {InstrumentName}";
+            }
+
+            public virtual void RandomInit()
+            {
+                string[] lines = {
                 "Гитара",
                 "Электрогитара",
                 "Пианино"
             };
 
-            Random rnd = new Random();
+                Random rnd = new Random();
 
-            InstrumentName = lines[rnd.Next(lines.Length)];
-            //id.number = rnd.Next(1,100);
+                InstrumentName = lines[rnd.Next(lines.Length)];
+                id.Id = rnd.Next(0, 100);
+            }
+
+            [ExcludeFromCodeCoverage]
+            public virtual void Init()
+            {
+                Console.WriteLine("Введите название инструмента:");
+                InstrumentName = Console.ReadLine();
+
+                Console.WriteLine("Введите id");
+                try
+                {
+                    id.Id = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    id.Id = 0;
+                }
         }
 
-        [ExcludeFromCodeCoverage]
-        public virtual void Init()
-        {
-            //Console.WriteLine("Введите id");
-            //try
-            //{
-            //    id.number = int.Parse(Console.ReadLine());
-            //}
-            //catch
-            //{
-            //    id.number = 0;
-            //}
-            Console.WriteLine("Введите название инструмента:");
-            InstrumentName = Console.ReadLine();
+            public virtual int CompareTo(object? obj)
+            {
+                if (obj == null) return -1;
+                if (obj is not MusicalInstrument) return -1;
+                MusicalInstrument m = obj as MusicalInstrument;
+                return String.Compare(this.InstrumentName, m.InstrumentName);
+            }
+
+            public object Clone()
+            {
+                return new MusicalInstrument(InstrumentName, id);
+            }
+
+            public object ShallowCopy()
+            {
+                return this.MemberwiseClone();
+            }
         }
 
-        public virtual int CompareTo(object? obj)
-        {
-            if (obj == null) return -1;
-            if (obj is not MusicalInstrument) return -1;
-            MusicalInstrument m = obj as MusicalInstrument;
-            return String.Compare(this.InstrumentName, m.InstrumentName);
-        }
-
-        //public object Clone()
-        //{
-        //    return new MusicalInstrument(InstrumentName, id.number);
-        //}
-
-        //public object ShallowCopy()
-        //{
-        //    return this.MemberwiseClone();
-        //}
     }
-}

@@ -16,7 +16,7 @@ namespace lab10LibraryWin
             PowerSource = "";
         }
 
-        public ElectricGuitar(string instrumentName, int numberOfGuitarStrings, string powerSource) : base(instrumentName, numberOfGuitarStrings)
+        public ElectricGuitar(string instrumentName, IdNumber id, int numberOfGuitarStrings, string powerSource) : base(instrumentName, id, numberOfGuitarStrings)
         {
             NumberOfGuitarStrings = numberOfGuitarStrings;
             PowerSource = powerSource;
@@ -25,13 +25,13 @@ namespace lab10LibraryWin
         [ExcludeFromCodeCoverage]
         public override void ShowVirtual()
         {
-            Console.WriteLine($"Название инструмента: {InstrumentName}, количество струн электрогитары: {NumberOfGuitarStrings} источник питания электрогитары: {PowerSource}");
+            Console.WriteLine($"количество струн электрогитары: {NumberOfGuitarStrings} источник питания электрогитары: {PowerSource}");
         }
 
         [ExcludeFromCodeCoverage]
         public void Show()
         {
-            Console.WriteLine($"Название инструмента: {InstrumentName}, количество струн электрогитары: {NumberOfGuitarStrings} источник питания электрогитары: {PowerSource}");
+            Console.WriteLine($"количество струн электрогитары: {NumberOfGuitarStrings} источник питания электрогитары: {PowerSource}");
         }
 
 
@@ -56,6 +56,8 @@ namespace lab10LibraryWin
             Random rnd = new Random();
 
             PowerSource = lines[rnd.Next(lines.Length)];
+
+            id.Id = rnd.Next(0, 100);
         }
 
         public string GetPowerSource()
@@ -84,6 +86,16 @@ namespace lab10LibraryWin
             }
             Console.WriteLine("Введите источник питания электрогитары:");
             Console.ReadLine();
+
+            Console.WriteLine("Введите id:");
+            try
+            {
+                id.Id = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                id.Id = 0;
+            }
         }
     }
 }

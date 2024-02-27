@@ -30,7 +30,7 @@ namespace lab10LibraryWin
             NumberOfPianoKeys = 0;
         }
 
-        public Piano(string instrumentName, string typeOfPiano, int numberOfPianoKeys) : base(instrumentName)
+        public Piano(string instrumentName, IdNumber id, string typeOfPiano, int numberOfPianoKeys) : base(instrumentName, id)
         {
             TypeOfPiano = typeOfPiano;
             NumberOfPianoKeys = numberOfPianoKeys;
@@ -39,13 +39,15 @@ namespace lab10LibraryWin
         [ExcludeFromCodeCoverage]
         public override void ShowVirtual()
         {
-            Console.WriteLine($"Название инструмента: {InstrumentName}, тип раскладки: {TypeOfPiano}, количество клавиш = {NumberOfPianoKeys}");
+            base.ShowVirtual();
+            Console.WriteLine($"тип раскладки: {TypeOfPiano}, количество клавиш = {NumberOfPianoKeys}");
         }
 
         [ExcludeFromCodeCoverage]
         public void Show()
         {
-            Console.WriteLine($"Название инструмента: {InstrumentName}, тип раскладки: {TypeOfPiano}, количество клавиш = {NumberOfPianoKeys}");
+            base.Show();
+            Console.WriteLine($"тип раскладки: {TypeOfPiano}, количество клавиш = {NumberOfPianoKeys}");
         }
 
         public override bool Equals(object obj)
@@ -69,6 +71,8 @@ namespace lab10LibraryWin
             TypeOfPiano = lines[rnd.Next(lines.Length)];
 
             NumberOfPianoKeys = rnd.Next(20, 100);
+
+            id.Id = rnd.Next(0, 100);
         }
 
         public int GetNumberOfPianoKeys()
@@ -96,6 +100,15 @@ namespace lab10LibraryWin
             catch
             {
                 NumberOfPianoKeys = 88;
+            }
+            Console.WriteLine("Введите id:");
+            try
+            {
+                Id.Id = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                Id.Id = 0;
             }
         }
 

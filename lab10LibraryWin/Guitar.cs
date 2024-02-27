@@ -28,7 +28,7 @@ namespace lab10LibraryWin
             NumberOfGuitarStrings = 0;
         }
 
-        public Guitar(string instrumentName, int numberOfGuitarStrings) : base(instrumentName)
+        public Guitar(string instrumentName, IdNumber id, int numberOfGuitarStrings) : base(instrumentName, id)
         {
             NumberOfGuitarStrings = numberOfGuitarStrings;
         }
@@ -36,13 +36,15 @@ namespace lab10LibraryWin
         [ExcludeFromCodeCoverage]
         public override void ShowVirtual()
         {
-            Console.WriteLine($"Название инструмента: {InstrumentName}, количество струн гитары: {NumberOfGuitarStrings}");
+            base.ShowVirtual();
+            Console.WriteLine($"количество струн гитары: {NumberOfGuitarStrings}");
         }
 
         [ExcludeFromCodeCoverage]
         public void Show()
         {
-            Console.WriteLine($"Название инструмента: {InstrumentName}, количество струн гитары: {NumberOfGuitarStrings}");
+            base.Show();
+            Console.WriteLine($"количество струн гитары: {NumberOfGuitarStrings}");
         }
 
 
@@ -66,6 +68,8 @@ namespace lab10LibraryWin
             Random rnd = new Random();
 
             NumberOfGuitarStrings = rnd.Next(1, 20);
+
+            id.Id = rnd.Next(0, 100);
         }
 
         [ExcludeFromCodeCoverage]
@@ -81,6 +85,20 @@ namespace lab10LibraryWin
             {
                 NumberOfGuitarStrings = 15;
             }
+            Console.WriteLine("Введите id:");
+            try
+            {
+                id.Id = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                id.Id = 0;
+            }
+        }
+
+        public object ShallowCopy()
+        {
+            return this.MemberwiseClone();
         }
 
     }

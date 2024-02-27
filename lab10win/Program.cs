@@ -6,12 +6,12 @@ namespace lab10win
     {
         static void Main(string[] args)
         {
-            Guitar guitar = new Guitar("Гитара", 3);
+            Guitar guitar = new Guitar("Гитара", new IdNumber(1), 3);
             guitar.Show();
             ElectricGuitar electricGuitar = new ElectricGuitar();
             electricGuitar.RandomInit();
             electricGuitar.Show();
-            Piano piano = new Piano("пианино", "октавная", 80);
+            Piano piano = new Piano("пианино", new IdNumber(2), "октавная", 80);
             piano.Show();
 
             Random oneTwoThree = new Random();
@@ -86,7 +86,7 @@ namespace lab10win
             }
             Console.WriteLine($"Количество гитар в коллекции = {counterGuitar}");
 
-            Piano pian = new Piano("пианино", "октавная", 77);
+            Piano pian = new Piano("пианино", new IdNumber(4), "октавная", 77);
             arr[0] = pian;
 
             Console.WriteLine("Выведем отсортированный массив");
@@ -96,7 +96,7 @@ namespace lab10win
                 item.ShowVirtual();
             }
 
-            int pos = Array.BinarySearch(arr, new Piano("пианино", "октавная", 77));
+            int pos = Array.BinarySearch(arr, new Piano("пианино", new IdNumber(4), "октавная", 77));
             if (pos < 0)
             {
                 Console.WriteLine("Такого элемента нет в массиве");
@@ -107,29 +107,37 @@ namespace lab10win
             }
 
 
-            //Console.WriteLine("Введите длину массива из гитар от 20 до 50");
-            //MusicalInstrument[] arrGuitar = new MusicalInstrument[IsInt(20, 50)];
-            //for (int i = 0; i < arrGuitar.Length; i++)
-            //{
-            //    int type = oneTwoThree.Next(1, 3);
-            //    if (type == 1)
-            //        arr[i] = new Guitar("Гитара", Guitar.RandomInitStatic());
-            //    else if (type == 2)
-            //        arr[i] = new ElectricGuitar("Электрогитара", Guitar.RandomInitStatic(), ElectricGuitar.RandomInitStatic());
-            //}
+            Console.WriteLine("Введите длину массива из гитар от 20 до 50");
+            MusicalInstrument[] arrGuitar = new MusicalInstrument[IsInt(20, 50)];
+            for (int i = 0; i < arrGuitar.Length; i++)
+            {
+                int type = oneTwoThree.Next(1, 2);
+                if (type == 1)
+                {
+                    Guitar g = new Guitar();
+                    g.RandomInit();
+                    arr[i] = g;
+                }
+                else if (type == 2)
+                {
+                    ElectricGuitar e = new ElectricGuitar();
+                    e.RandomInit();
+                    arr[i] = e;
+                }
+            }
 
-            //Console.WriteLine("Выведем массив гитар:");
-            //foreach (MusicalInstrument item in arrGuitar)
-            //{
-            //    item.ShowVirtual();
-            //}
+            Console.WriteLine("Выведем массив гитар:");
+            foreach (MusicalInstrument item in arrGuitar)
+            {
+                item.ShowVirtual();
+            }
 
-            //Array.Sort(arrGuitar, new SortByNumberOfStrings());
-            //Console.WriteLine("Выведем массив гитар, отсортированный по количеству струн:");
-            //foreach (MusicalInstrument item in arrGuitar)
-            //{
-            //    item.ShowVirtual();
-            //}
+            Array.Sort(arrGuitar, new SortByNumberOfStrings());
+            Console.WriteLine("Выведем массив гитар, отсортированный по количеству струн:");
+            foreach (MusicalInstrument item in arrGuitar)
+            {
+                item.ShowVirtual();
+            }
 
 
             //Интерфейсы
