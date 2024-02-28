@@ -16,24 +16,24 @@ namespace TestElectricGuitar
         [TestMethod]
         public void TestMethod2()
         {
-            ElectricGuitar expected = new ElectricGuitar("электрогитара", 7, "батарейки");
-            ElectricGuitar actual = new ElectricGuitar("электрогитара", 7, "батарейки");
+            ElectricGuitar expected = new ElectricGuitar("электрогитара", new IdNumber(1), 7, "батарейки");
+            ElectricGuitar actual = new ElectricGuitar("электрогитара", new IdNumber(1), 7, "батарейки");
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void TestMethod3()
         {
-            ElectricGuitar expected = new ElectricGuitar("электрогитара", -3, "батарейки");
-            ElectricGuitar actual = new ElectricGuitar("электрогитара", 0, "батарейки");
+            ElectricGuitar expected = new ElectricGuitar("электрогитара", new IdNumber(1), -3, "батарейки");
+            ElectricGuitar actual = new ElectricGuitar("электрогитара", new IdNumber(1), 0, "батарейки");
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void TestMethod4()
         {
-            ElectricGuitar expected = new ElectricGuitar("электрогитара", 7, "батарейки");
-            ElectricGuitar actual = new ElectricGuitar("электрогитара", 7, "батарейки");
+            ElectricGuitar expected = new ElectricGuitar("электрогитара", new IdNumber(1), 7, "батарейки");
+            ElectricGuitar actual = new ElectricGuitar("электрогитара", new IdNumber(1), 7, "батарейки");
             Assert.AreEqual(actual.GetPowerSource(), expected.GetPowerSource());
         }
 

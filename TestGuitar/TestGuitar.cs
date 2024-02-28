@@ -15,16 +15,16 @@ namespace TestGuitar
         [TestMethod]
         public void TestMethod2()
         {
-            Guitar expected = new Guitar("гитара", 7);
-            Guitar actual = new Guitar("гитара", 7);
+            Guitar expected = new Guitar("гитара", new IdNumber(1), 7);
+            Guitar actual = new Guitar("гитара", new IdNumber(1), 7);
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void TestMethod3()
         {
-            Guitar expected = new Guitar("гитара", -2);
-            Guitar actual = new Guitar("гитара", 0);
+            Guitar expected = new Guitar("гитара", new IdNumber(1), 7);
+            Guitar actual = new Guitar("гитара", new IdNumber(1), 7);
             Assert.AreEqual(expected, actual);
         }
 

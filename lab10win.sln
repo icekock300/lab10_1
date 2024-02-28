@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestElectricGuitar", "TestE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPiano", "TestPiano\TestPiano.csproj", "{D21E2F1C-ABCA-41C6-8747-DE5299781298}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentTest", "StudentTest\StudentTest.csproj", "{2C1ADB6F-6C8D-4EC4-A26F-C60D84CC957A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestStudent", "StudentTest\TestStudent.csproj", "{2C1ADB6F-6C8D-4EC4-A26F-C60D84CC957A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

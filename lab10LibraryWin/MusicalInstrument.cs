@@ -12,7 +12,7 @@ namespace lab10LibraryWin
             set
             {
                 if (value < 0)
-                    throw new Exception("ID должно быть больше нуля!");
+                    id = 0;
                 else
                     id = value;
             }

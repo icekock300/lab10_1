@@ -15,18 +15,26 @@ namespace TestLab10
         [TestMethod]
         public void TestMethod2()
         {
-            MusicalInstrument expected = new MusicalInstrument("гитара");
-            MusicalInstrument actual = new MusicalInstrument("гитара");
+            MusicalInstrument expected = new MusicalInstrument("гитара", new IdNumber(1));
+            MusicalInstrument actual = new MusicalInstrument("гитара", new IdNumber(1));
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void TestMethod3()
         {
-            MusicalInstrument expected = new MusicalInstrument("гитара");
-            MusicalInstrument actual = new MusicalInstrument("пианино");
+            MusicalInstrument expected = new MusicalInstrument("гитара", new IdNumber(1));
+            MusicalInstrument actual = new MusicalInstrument("пианино", new IdNumber(1));
             int k = expected.CompareTo(actual);
             Assert.AreEqual(k, -1);
+        }
+
+        [TestMethod]
+        public void TestMethod4()
+        {
+            MusicalInstrument expected = new MusicalInstrument("гитара", new IdNumber(-1));
+            MusicalInstrument actual = new MusicalInstrument("гитара", new IdNumber(0));
+            Assert.AreEqual(expected, actual);
         }
     }
 }
