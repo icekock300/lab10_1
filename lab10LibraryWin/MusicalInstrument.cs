@@ -125,9 +125,9 @@ namespace lab10LibraryWin
                 return new MusicalInstrument(InstrumentName, id);
             }
 
-            public object ShallowCopy()
+            public MusicalInstrument ShallowCopy()
             {
-                return this.MemberwiseClone();
+                return (MusicalInstrument)this.MemberwiseClone();
             }
         }
 

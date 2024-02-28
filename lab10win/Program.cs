@@ -116,13 +116,13 @@ namespace lab10win
                 {
                     Guitar g = new Guitar();
                     g.RandomInit();
-                    arr[i] = g;
+                    arrGuitar[i] = g;
                 }
                 else if (type == 2)
                 {
                     ElectricGuitar e = new ElectricGuitar();
                     e.RandomInit();
-                    arr[i] = e;
+                    arrGuitar[i] = e;
                 }
             }
 
@@ -174,18 +174,21 @@ namespace lab10win
                 arr2[i] = s;
             }
 
-            Console.WriteLine("\narr2");
+            Console.WriteLine("\narr2 с помощью интерфейсов");
             foreach (IInit item in arr2)
             {
                 Console.WriteLine(item);
             }
 
-            //MusicalInstrument m = new MusicalInstrument();
-            //m.RandomInit();
-            //Console.WriteLine(m);
+            MusicalInstrument clonedMusicalInstrument = (MusicalInstrument)arr[0].Clone();
 
-            //MusicalInstrument mm = new MusicalInstrument(m);
-            //Console.WriteLine(mm);
+            MusicalInstrument shallowCopy = arr[0].ShallowCopy();
+
+            Console.WriteLine("Cloned:");
+            clonedMusicalInstrument.Show();
+
+            Console.WriteLine("Shallow Copy:");
+            shallowCopy.Show();
 
         }
         static int IsInt(int min, int max)
