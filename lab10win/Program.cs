@@ -6,20 +6,21 @@ namespace lab10win
     {
         static void Main(string[] args)
         {
-            Guitar guitar = new Guitar("Гитара", new IdNumber(1), 3);
+            //создание объектов иерархии
+            Guitar guitar = new Guitar("Гитара", new IdNumber(1), 3); //создание объекта гитара
             guitar.Show();
-            ElectricGuitar electricGuitar = new ElectricGuitar();
-            electricGuitar.RandomInit();
+            ElectricGuitar electricGuitar = new ElectricGuitar(); //создание объекта электрогитара
+            electricGuitar.RandomInit(); //инициализация с помощью ДСЧ
             electricGuitar.Show();
-            Piano piano = new Piano("пианино", new IdNumber(2), "октавная", 80);
+            Piano piano = new Piano("пианино", new IdNumber(2), "октавная", 80); //создание объекта пианино
             piano.Show();
 
-            Random oneTwoThree = new Random();
+            Random oneTwoThree = new Random(); //ДСЧ
 
             Console.WriteLine("Введите желаемую длину массива от 20 до 100:");
-            MusicalInstrument[] arr = new MusicalInstrument[IsInt(20, 100)];
+            MusicalInstrument[] arr = new MusicalInstrument[IsInt(20, 100)]; //создание массива arr
 
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++) //цикл для заполнения массива случайными иерархии объектами со случайными атрибутами
             {
                 int type = oneTwoThree.Next(1, 4);
                 if (type == 1)
@@ -43,7 +44,8 @@ namespace lab10win
                 }
             }
 
-            Console.WriteLine("Вывод массива с помощью не виртуальных методов");
+            //вывод созданного массива с помощью разных методов (невиртуальный и виртуальный)
+            Console.WriteLine("Вывод массива с помощью НЕвиртуальных методов");
             foreach (MusicalInstrument item in arr)
             {
                 item.Show();
@@ -54,49 +56,23 @@ namespace lab10win
                 item.ShowVirtual();
             }
 
-            int counterAkk = 0;
-            int counterPiano = 0;
+            //ЗАПРОСЫ (реализовано с помощью статических функций)
+            Console.WriteLine($"Количество пианино, у которых клавиш больше, чем 60 = {CountPiano(arr)}");
+            Console.WriteLine($"Количество электрогитар, питающихся от аккумуляторов = {CountBattaries(arr)}");
+            Console.WriteLine($"Количество гитар в коллекции = {CountGuitars(arr)}");
 
-            foreach (MusicalInstrument item in arr)
-            {
-                Piano t = item as Piano;
-                if (t != null)
-                    if (t.GetNumberOfPianoKeys() > 60)
-                    {
-                        counterPiano++;
-                    }
-            }
-            Console.WriteLine($"Количество пианино, у которых клавиш больше, чем 60 = {counterPiano}");
-
-            foreach (MusicalInstrument item in arr)
-            {
-                if (item is ElectricGuitar t)
-                    if (t.GetPowerSource() == "аккумуляторы")
-                    {
-                        counterAkk++;
-                    }
-            }
-            Console.WriteLine($"Количество электрогитар, питающихся от аккумуляторов = {counterAkk}");
-
-            int counterGuitar = 0;
-            foreach (MusicalInstrument item in arr)
-            {
-                if (typeof(Guitar) == item.GetType())
-                    counterGuitar++;
-            }
-            Console.WriteLine($"Количество гитар в коллекции = {counterGuitar}");
-
-            Piano pian = new Piano("пианино", new IdNumber(4), "октавная", 77);
-            arr[0] = pian;
+            //бинарный поиск в отсортированном массиве
+            Piano pianoForSearch = new Piano("пианино", new IdNumber(4), "октавная", 77); //добавление в массив определенного объекта
+            arr[0] = pianoForSearch;
 
             Console.WriteLine("Выведем отсортированный массив");
-            Array.Sort(arr);
-            foreach (MusicalInstrument item in arr)
+            Array.Sort(arr); //сортировка массива
+            foreach (MusicalInstrument item in arr) //вывод отсортированного массива
             {
                 item.ShowVirtual();
             }
 
-            int pos = Array.BinarySearch(arr, new Piano("пианино", new IdNumber(4), "октавная", 77));
+            int pos = Array.BinarySearch(arr, new Piano("пианино", new IdNumber(4), "октавная", 77)); //бинарный поиск элемента в отсортированном массиве
             if (pos < 0)
             {
                 Console.WriteLine("Такого элемента нет в массиве");
@@ -106,12 +82,12 @@ namespace lab10win
                 Console.WriteLine($"Элемент находится на {pos + 1} позиции");
             }
 
-
+            //сортировка с помощью IComparer
             Console.WriteLine("Введите длину массива из гитар от 20 до 50");
-            MusicalInstrument[] arrGuitar = new MusicalInstrument[IsInt(20, 50)];
-            for (int i = 0; i < arrGuitar.Length; i++)
+            MusicalInstrument[] arrGuitar = new MusicalInstrument[IsInt(20, 50)]; //создание массива, состоящего из гитар
+            for (int i = 0; i < arrGuitar.Length; i++) //заполнение массива гитарами (обычная и электро) с помощью ДСЧ
             {
-                int type = oneTwoThree.Next(1, 2);
+                int type = oneTwoThree.Next(1, 3);
                 if (type == 1)
                 {
                     Guitar g = new Guitar();
@@ -127,22 +103,22 @@ namespace lab10win
             }
 
             Console.WriteLine("Выведем массив гитар:");
-            foreach (MusicalInstrument item in arrGuitar)
+            foreach (MusicalInstrument item in arrGuitar) //вывод массива гитар с помощью виртуального метода
             {
                 item.ShowVirtual();
             }
 
-            Array.Sort(arrGuitar, new SortByNumberOfStrings());
+            Array.Sort(arrGuitar, new SortByNumberOfStrings()); //сортировка массива гитар по количеству струн
             Console.WriteLine("Выведем массив гитар, отсортированный по количеству струн:");
-            foreach (MusicalInstrument item in arrGuitar)
+            foreach (MusicalInstrument item in arrGuitar) //вывод отсортированного массива гитар по количеству струн
             {
                 item.ShowVirtual();
             }
 
 
-            //Интерфейсы
-            IInit[] arr2 = new IInit[20];
-            for (int i = 0; i < 10; i++)
+            //интерфейсы
+            IInit[] arrInterface = new IInit[20]; //создание массива с помощью интерфейсов
+            for (int i = 0; i < arrInterface.Length / 2; i++) //заполнение массива объектами из иерархии
             {
                 Random rnd = new Random();
                 int choice = rnd.Next(1, 4);
@@ -150,48 +126,48 @@ namespace lab10win
                 {
                     Guitar g = new Guitar();
                     g.RandomInit();
-                    arr2[i] = g;
+                    arrInterface[i] = g;
                 }
                 else
                 if (choice == 2)
                 {
                     ElectricGuitar e = new ElectricGuitar();
                     e.RandomInit();
-                    arr2[i] = e;
+                    arrInterface[i] = e;
                 }
                 else
                 {
                     Piano p = new Piano();
                     p.RandomInit();
-                    arr2[i] = p;
+                    arrInterface[i] = p;
                 }
             }
 
-            for (int i = 10; i < 20; i++)
+            for (int i = 10; i < arrInterface.Length; i++) //заполнение массива объектами из класса ЛР9
             {
                 Student s = new Student();
                 s.RandomInit();
-                arr2[i] = s;
+                arrInterface[i] = s;
             }
 
-            Console.WriteLine("\narr2 с помощью интерфейсов");
-            foreach (IInit item in arr2)
+            Console.WriteLine("Вывод массива, созданного с помощью интерфейсов");
+            foreach (IInit item in arrInterface) //цикл для вывода элементов массива, созданного с помощью интерфейса
             {
                 Console.WriteLine(item);
             }
 
-            MusicalInstrument clonedMusicalInstrument = (MusicalInstrument)arr[0].Clone();
-
-            MusicalInstrument shallowCopy = arr[0].ShallowCopy();
+            //клонирование и поверхностная копия
+            MusicalInstrument clonedMusicalInstrument = (MusicalInstrument)arr[0].Clone(); //клонирование
+            MusicalInstrument shallowCopy = arr[0].ShallowCopy(); //копия
 
             Console.WriteLine("Cloned:");
-            clonedMusicalInstrument.Show();
+            clonedMusicalInstrument.Show(); //вывод клонированного объекта
 
             Console.WriteLine("Shallow Copy:");
-            shallowCopy.Show();
-
+            shallowCopy.Show(); //вывод объекта, созданного с помощью поверхностной копии
         }
-        static int IsInt(int min, int max)
+
+        static int IsInt(int min, int max) //функция для проверки на Int (параметры - минимальное и максимальное значение)
         {
             bool isConvert;
             int number;
@@ -207,5 +183,44 @@ namespace lab10win
             return number;
         }
 
+        static int CountPiano(MusicalInstrument[] arr) //функция для запроса #1 (количество пианино, клавиш которого больше 60)
+        {
+            int counterPiano = 0;
+            foreach (MusicalInstrument item in arr)
+            {
+                Piano t = item as Piano;
+                if (t != null)
+                    if (t.GetNumberOfPianoKeys() > 60)
+                    {
+                        counterPiano++;
+                    }
+            }
+            return counterPiano;
+        }
+
+        static int CountBattaries(MusicalInstrument[] arr) //функция для запроса #2 (количество электрогитар с источником питания аккумуляторами)
+        {
+            int counterBatteries = 0;
+            foreach (MusicalInstrument item in arr)
+            {
+                if (item is ElectricGuitar t)
+                    if (t.GetPowerSource() == "аккумуляторы")
+                    {
+                        counterBatteries++;
+                    }
+            }
+            return counterBatteries;
+        }
+
+        static int CountGuitars(MusicalInstrument[] arr) //функция для запроса #3 (количество гитар)
+        {
+            int counterGuitar = 0;
+            foreach (MusicalInstrument item in arr)
+            {
+                if (typeof(Guitar) == item.GetType())
+                    counterGuitar++;
+            }
+            return counterGuitar;
+        }
     }
 }

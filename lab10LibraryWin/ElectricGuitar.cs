@@ -25,13 +25,15 @@ namespace lab10LibraryWin
         [ExcludeFromCodeCoverage]
         public override void ShowVirtual()
         {
-            Console.WriteLine($"количество струн электрогитары: {NumberOfGuitarStrings} источник питания электрогитары: {PowerSource}");
+            base.ShowVirtual();
+            Console.WriteLine($"источник питания электрогитары: {PowerSource}");
         }
 
         [ExcludeFromCodeCoverage]
         public void Show()
         {
-            Console.WriteLine($"количество струн электрогитары: {NumberOfGuitarStrings} источник питания электрогитары: {PowerSource}");
+            base.Show();
+            Console.WriteLine($"источник питания электрогитары: {PowerSource}");
         }
 
 
