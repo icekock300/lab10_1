@@ -11,7 +11,7 @@ namespace lab10LibraryWin
     {
         protected int numberOfGuitarStrings;
 
-        public int NumberOfGuitarStrings
+        public int NumberOfGuitarStrings //свойство для количества струн
         {
             get => numberOfGuitarStrings;
             set
@@ -23,32 +23,32 @@ namespace lab10LibraryWin
             }
         }
 
-        public Guitar() : base()
+        public Guitar() : base() //конструктор без параметров
         {
             NumberOfGuitarStrings = 0;
         }
 
-        public Guitar(string instrumentName, IdNumber id, int numberOfGuitarStrings) : base(instrumentName, id)
+        public Guitar(string instrumentName, IdNumber id, int numberOfGuitarStrings) : base(instrumentName, id) //конструктор с параметрами
         {
             NumberOfGuitarStrings = numberOfGuitarStrings;
         }
 
         [ExcludeFromCodeCoverage]
-        public override void ShowVirtual()
+        public override void ShowVirtual() //виртуальный метод вывода объектов
         {
             base.ShowVirtual();
-            Console.WriteLine($"количество струн гитары: {NumberOfGuitarStrings}");
+            Console.WriteLine($"количество струн: {NumberOfGuitarStrings}");
         }
 
         [ExcludeFromCodeCoverage]
-        public void Show()
+        public void Show() //невиртуальный метод вывода объектов
         {
             base.Show();
-            Console.WriteLine($"количество струн гитары: {NumberOfGuitarStrings}");
+            Console.WriteLine($"количество струн: {NumberOfGuitarStrings}");
         }
 
 
-        public override bool Equals(object obj)
+        public override bool Equals(object obj) //метод для сравнения объектов
         {
             if (obj == null) return false;
             if (obj is not Guitar) return false;
@@ -61,7 +61,7 @@ namespace lab10LibraryWin
             return base.ToString() + $"количество струн: {NumberOfGuitarStrings}";
         }
 
-        public override void RandomInit()
+        public override void RandomInit() //инициализация объекта с помощью ДСЧ
         {
 
             InstrumentName = "гитара";
@@ -73,7 +73,7 @@ namespace lab10LibraryWin
         }
 
         [ExcludeFromCodeCoverage]
-        public override void Init()
+        public override void Init() //инициализация объекта с клавиатуры
         {
             InstrumentName = "гитара";
             Console.WriteLine("Введите количество струн гитары:");
@@ -95,11 +95,5 @@ namespace lab10LibraryWin
                 id.Id = 0;
             }
         }
-
-        public object ShallowCopy()
-        {
-            return this.MemberwiseClone();
-        }
-
     }
 }

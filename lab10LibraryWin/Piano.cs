@@ -9,10 +9,10 @@ namespace lab10LibraryWin
 {
     public class Piano : MusicalInstrument, IComparable
     {
-        protected string TypeOfPiano { get; set; }
+        protected string TypeOfPiano { get; set; } //автосвойства для типа клавиатуры
         protected int numberOfPianoKeys;
 
-        public int NumberOfPianoKeys
+        public int NumberOfPianoKeys //свойства для количества клавиш клавиатуры
         {
             get => numberOfPianoKeys;
             set
@@ -24,40 +24,40 @@ namespace lab10LibraryWin
             }
         }
 
-        public Piano() : base()
+        public Piano() : base() //конструктор без параметров
         {
             TypeOfPiano = "";
             NumberOfPianoKeys = 0;
         }
 
-        public Piano(string instrumentName, IdNumber id, string typeOfPiano, int numberOfPianoKeys) : base(instrumentName, id)
+        public Piano(string instrumentName, IdNumber id, string typeOfPiano, int numberOfPianoKeys) : base(instrumentName, id) //конструктор с параметрами
         {
             TypeOfPiano = typeOfPiano;
             NumberOfPianoKeys = numberOfPianoKeys;
         }
 
         [ExcludeFromCodeCoverage]
-        public override void ShowVirtual()
+        public override void ShowVirtual() //виртуальный метод вывода объекта пианино
         {
             base.ShowVirtual();
             Console.WriteLine($"тип раскладки: {TypeOfPiano}, количество клавиш = {NumberOfPianoKeys}");
         }
 
         [ExcludeFromCodeCoverage]
-        public void Show()
+        public void Show() //невиртуальный метод вывода объекта пианино
         {
             base.Show();
             Console.WriteLine($"тип раскладки: {TypeOfPiano}, количество клавиш = {NumberOfPianoKeys}");
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object obj) //метод для сравнивания объектов
         {
             if (obj == null) return false;
             if (obj is not Piano) return false;
             return ((Piano)obj).InstrumentName == this.InstrumentName && ((Piano)obj).TypeOfPiano == this.TypeOfPiano;
         }
 
-        public override void RandomInit()
+        public override void RandomInit() //инициализация объекта случайным спобосом
         {
             InstrumentName = "пианино";
             string[] lines = {
@@ -75,7 +75,7 @@ namespace lab10LibraryWin
             id.Id = rnd.Next(0, 100);
         }
 
-        public int GetNumberOfPianoKeys()
+        public int GetNumberOfPianoKeys() //метод, возвращающий количество клавиш пианино
         {
             return NumberOfPianoKeys;
         }
@@ -87,7 +87,7 @@ namespace lab10LibraryWin
         }
 
         [ExcludeFromCodeCoverage]
-        public override void Init()
+        public override void Init() //инициализация объекта с клавиатуры
         {
             InstrumentName = "пианино";
             Console.WriteLine("Введите тип раскладки пианино:");

@@ -9,42 +9,42 @@ namespace lab10LibraryWin
 {
     public class ElectricGuitar : Guitar
     {
-        protected string PowerSource { get; set; }
+        protected string PowerSource { get; set; } //автосвойство для источника питания
 
-        public ElectricGuitar() : base()
+        public ElectricGuitar() : base() //конструктор без параметров
         {
             PowerSource = "";
         }
 
-        public ElectricGuitar(string instrumentName, IdNumber id, int numberOfGuitarStrings, string powerSource) : base(instrumentName, id, numberOfGuitarStrings)
+        public ElectricGuitar(string instrumentName, IdNumber id, int numberOfGuitarStrings, string powerSource) : base(instrumentName, id, numberOfGuitarStrings) //конструктор с параметрами
         {
             NumberOfGuitarStrings = numberOfGuitarStrings;
             PowerSource = powerSource;
         }
 
         [ExcludeFromCodeCoverage]
-        public override void ShowVirtual()
+        public override void ShowVirtual() //виртуальный метод вывода объекта
         {
             base.ShowVirtual();
             Console.WriteLine($"источник питания электрогитары: {PowerSource}");
         }
 
         [ExcludeFromCodeCoverage]
-        public void Show()
+        public void Show() //невиртуальный метод вывода объекта
         {
             base.Show();
             Console.WriteLine($"источник питания электрогитары: {PowerSource}");
         }
 
 
-        public override bool Equals(object obj)
+        public override bool Equals(object obj) //метод для сравнивания объектов
         {
             if (obj == null) return false;
             if (obj is not ElectricGuitar) return false;
             return ((ElectricGuitar)obj).InstrumentName == this.InstrumentName && ((ElectricGuitar)obj).PowerSource == this.PowerSource;
         }
 
-        public override void RandomInit()
+        public override void RandomInit() //инициализация объекта с помощью ДСЧ
         {
             base.RandomInit();
             InstrumentName = "электрогитара";
@@ -62,7 +62,7 @@ namespace lab10LibraryWin
             id.Id = rnd.Next(0, 100);
         }
 
-        public string GetPowerSource()
+        public string GetPowerSource() //метод, возвращающий источник питания
         {
             return PowerSource;
         }
@@ -74,7 +74,7 @@ namespace lab10LibraryWin
         }
 
         [ExcludeFromCodeCoverage]
-        public override void Init()
+        public override void Init() //инициализация объекта с клавиатуры
         {
             InstrumentName = "электрогитара";
             Console.WriteLine("Введите количество струн электрогитары:");
