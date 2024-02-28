@@ -165,6 +165,9 @@ namespace lab10win
 
             Console.WriteLine("\nShallow Copy:");
             shallowCopy.Show(); //вывод объекта, созданного с помощью поверхностной копии
+
+
+            //_____конец Main_____\\
         }
 
         static int IsInt(int min, int max) //функция для проверки на Int (параметры - минимальное и максимальное значение)
