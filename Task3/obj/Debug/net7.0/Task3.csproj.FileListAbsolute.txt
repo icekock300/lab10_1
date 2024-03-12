@@ -1,0 +1,37 @@
+/Users/kirill/Projects/lab10_1/Task3/bin/Debug/net7.0/Task3
+/Users/kirill/Projects/lab10_1/Task3/bin/Debug/net7.0/Task3.deps.json
+/Users/kirill/Projects/lab10_1/Task3/bin/Debug/net7.0/Task3.runtimeconfig.json
+/Users/kirill/Projects/lab10_1/Task3/bin/Debug/net7.0/Task3.dll
+/Users/kirill/Projects/lab10_1/Task3/bin/Debug/net7.0/Task3.pdb
+/Users/kirill/Projects/lab10_1/Task3/bin/Debug/net7.0/lab10LibraryWin.dll
+/Users/kirill/Projects/lab10_1/Task3/bin/Debug/net7.0/lab10LibraryWin.pdb
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.csproj.AssemblyReference.cache
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.AssemblyInfoInputs.cache
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.AssemblyInfo.cs
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.csproj.CoreCompileInputs.cache
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.csproj.CopyComplete
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.dll
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/refint/Task3.dll
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.pdb
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/Task3.genruntimeconfig.cache
+/Users/kirill/Projects/lab10_1/Task3/obj/Debug/net7.0/ref/Task3.dll
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\bin\Debug\net7.0\Task3.exe
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\bin\Debug\net7.0\Task3.deps.json
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\bin\Debug\net7.0\Task3.runtimeconfig.json
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\bin\Debug\net7.0\Task3.dll
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\bin\Debug\net7.0\Task3.pdb
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\bin\Debug\net7.0\lab10LibraryWin.dll
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\bin\Debug\net7.0\lab10LibraryWin.pdb
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.csproj.AssemblyReference.cache
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.GeneratedMSBuildEditorConfig.editorconfig
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.AssemblyInfoInputs.cache
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.AssemblyInfo.cs
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.csproj.CoreCompileInputs.cache
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.sourcelink.json
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.csproj.CopyComplete
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.dll
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\refint\Task3.dll
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.pdb
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\Task3.genruntimeconfig.cache
+\\Mac\Home\Desktop\lab10_1 — копия\Task3\obj\Debug\net7.0\ref\Task3.dll
