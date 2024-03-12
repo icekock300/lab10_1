@@ -37,14 +37,14 @@ namespace lab10LibraryWin
         public override void ShowVirtual() //виртуальный метод вывода объектов
         {
             base.ShowVirtual();
-            Console.WriteLine($"количество струн: {NumberOfGuitarStrings}");
+            Console.WriteLine($" количество струн: {NumberOfGuitarStrings}");
         }
 
         [ExcludeFromCodeCoverage]
         public void Show() //невиртуальный метод вывода объектов
         {
             base.Show();
-            Console.WriteLine($"количество струн: {NumberOfGuitarStrings}");
+            Console.WriteLine($" количество струн: {NumberOfGuitarStrings}");
         }
 
 
@@ -58,7 +58,7 @@ namespace lab10LibraryWin
         [ExcludeFromCodeCoverage]
         public override string ToString()
         {
-            return base.ToString() + $"количество струн: {NumberOfGuitarStrings}";
+            return base.ToString() + $" количество струн: {NumberOfGuitarStrings}";
         }
 
         public override void RandomInit() //инициализация объекта с помощью ДСЧ
@@ -95,5 +95,12 @@ namespace lab10LibraryWin
                 id.Id = 0;
             }
         }
+
+        public MusicalInstrument GetBase
+        {
+            get => new MusicalInstrument(InstrumentName, id);
+        }
+
+        
     }
 }

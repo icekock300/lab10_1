@@ -83,7 +83,7 @@ namespace lab10LibraryWin
         [ExcludeFromCodeCoverage]
         public override string ToString()
         {
-            return base.ToString() + $"тип раскладки: {TypeOfPiano}, количество клавиш: {NumberOfPianoKeys}";
+            return base.ToString() + $" тип раскладки: {TypeOfPiano}, количество клавиш: {NumberOfPianoKeys}";
         }
 
         [ExcludeFromCodeCoverage]

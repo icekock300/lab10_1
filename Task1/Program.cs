@@ -158,6 +158,12 @@ namespace lab10win
             Console.WriteLine($"Количество гитар в коллекции = {CountGuitars(al)}");
 
             //клонирование\\
+            ArrayList clonedArrayList = (ArrayList)al.Clone();
+            Console.WriteLine("\nВывод склонированной коллекции");
+            foreach (object item in clonedArrayList)
+            {
+                Console.WriteLine(item.ToString());
+            }
 
             //поиск
             MusicalInstrument elemForSearch = new MusicalInstrument();
@@ -165,94 +171,17 @@ namespace lab10win
             elemForSearch.Init();
             al.Add(elemForSearch);
 
+            al.Sort();
+
             int pos = al.IndexOf(elemForSearch);
 
             Console.WriteLine($"Позиция элемента в отсортированной коллекции = {pos + 1}");
 
-            al.Sort();
             Console.WriteLine($"Вывод отсортированной коллекции:");
             foreach (object item in al)
             {
                 Console.WriteLine(item.ToString());
             }
-
-            //часть 2
-            Queue<MusicalInstrument> queue = new Queue<MusicalInstrument>();
-            Console.WriteLine($"В очереди {queue.Count} элементов");
-
-            for (int i = 0; i < 5; i++)
-            {
-                MusicalInstrument m = new MusicalInstrument();
-                m.RandomInit();
-                queue.Enqueue(m);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                Guitar g = new Guitar();
-                g.RandomInit();
-                queue.Enqueue(g);
-            }
-
-            foreach (MusicalInstrument item in queue)
-            {
-                Console.WriteLine(item);
-            }
-
-            //добавление элементов
-            Console.WriteLine("Введите, сколько элементов вы хотите добавить (от 1 до 20): ");
-            int countForAddQueue = IsInt(1, 20);
-            for (int i = 0; i < countForAddQueue; i++)
-            {
-                int choice = rnd.Next(1, 3);
-                if (choice == 1)
-                {
-                    Guitar g = new Guitar();
-                    g.RandomInit();
-                    queue.Enqueue(g);
-                }
-                else
-                if (choice == 2)
-                {
-                    MusicalInstrument m = new MusicalInstrument();
-                    m.RandomInit();
-                    queue.Enqueue(m);
-                }
-            }
-
-            MusicalInstrument elemForSearchQueue = new MusicalInstrument();
-            Console.WriteLine("Введите элемент для поиска");
-            elemForSearchQueue.Init();
-            if (queue.Contains(elemForSearchQueue))
-                Console.WriteLine("Найден");
-            else
-                Console.WriteLine("Не найден");
-
-
-            //удаление элементов
-            Queue<MusicalInstrument> temp = new Queue<MusicalInstrument>();
-            while (queue.Count > 0)
-            {
-                MusicalInstrument m = queue.Dequeue();
-                if (!m.Equals(elemForSearchQueue))
-                    temp.Enqueue(m);
-                else
-                    Console.WriteLine($"Удаляем {m}");
-            }
-            queue = temp;
-
-            //запросы
-            Console.WriteLine("\nВыведем все гитары из очереди");
-            foreach (MusicalInstrument item in queue)
-            {
-                if (item is Guitar)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-            Console.WriteLine($"Количество пианино в очереди = {CountPianoQueue(queue)}");
-            Console.WriteLine($"Количество пианино в очереди = {CountGuitarsQueue(queue)}");
-
-
         }
-    }   
+    }
 }

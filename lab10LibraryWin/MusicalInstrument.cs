@@ -5,8 +5,8 @@ namespace lab10LibraryWin
 {
     public class IdNumber
     {
-        protected int id; // поле id
-        public int Id // свойство для поля id
+        protected int id; //поле id
+        public int Id //свойство для поля id
         {
             get => id;
             set
@@ -17,15 +17,15 @@ namespace lab10LibraryWin
                     id = value;
             }
         }
-        public IdNumber(int id) // конструктор с параметром
+        public IdNumber(int id) //конструктор с параметром
         {
             Id = id;
         }
-        public override string ToString() // перегруженный метод ToString()
+        public override string ToString() //перегруженный метод ToString
         {
             return Id.ToString();
         }
-        public override bool Equals(object obj) // перегруженный метод Equals()
+        public override bool Equals(object obj) //перегруженный метод Equals
         {
             if (obj == null) return false;
             if (obj is IdNumber i)
@@ -56,19 +56,19 @@ namespace lab10LibraryWin
             }
 
             [ExcludeFromCodeCoverage]
-            public virtual void ShowVirtual()
+            public virtual void ShowVirtual() //виртуальный метод для вывода объекта на печать
             {
                 Console.WriteLine($"id: {id}, Название инструмента: {InstrumentName}");
             }
 
             [ExcludeFromCodeCoverage]
-            public void Show()
+            public void Show() //невиртуальный метод для вывода объекта на печать
             {
                 Console.WriteLine($"id: {id}, Название инструмента: {InstrumentName}");
             }
 
 
-            public override bool Equals(object obj)
+            public override bool Equals(object obj) //метод для сравнивания объектов
             {
                 if (obj == null) return false;
                 if (obj is not MusicalInstrument) return false;
@@ -81,7 +81,7 @@ namespace lab10LibraryWin
                 return $"id: {id}, Название инструмента: {InstrumentName}";
             }
 
-            public virtual void RandomInit()
+            public virtual void RandomInit() //виртуальный метод для инициализации объекта с ДСЧ
             {
                 string[] lines = {
                 "Гитара",
@@ -96,7 +96,7 @@ namespace lab10LibraryWin
             }
 
             [ExcludeFromCodeCoverage]
-            public virtual void Init()
+            public virtual void Init() //виртуальный метод для инициализации объекта с клавиатуры
             {
                 Console.WriteLine("Введите название инструмента:");
                 InstrumentName = Console.ReadLine();
@@ -120,12 +120,12 @@ namespace lab10LibraryWin
                 return String.Compare(this.InstrumentName, m.InstrumentName);
             }
 
-            public object Clone()
+            public object Clone() //метод для клонирования
             {
                 return new MusicalInstrument(InstrumentName, id);
             }
 
-            public MusicalInstrument ShallowCopy()
+            public MusicalInstrument ShallowCopy() //метод для поверхностного копирования
             {
                 return (MusicalInstrument)this.MemberwiseClone();
             }
