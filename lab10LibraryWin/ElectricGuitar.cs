@@ -70,7 +70,7 @@ namespace lab10LibraryWin
         [ExcludeFromCodeCoverage]
         public override string ToString()
         {
-            return base.ToString() + $"источник питания электрогитары: {PowerSource}";
+            return base.ToString() + $" источник питания электрогитары: {PowerSource}";
         }
 
         [ExcludeFromCodeCoverage]
